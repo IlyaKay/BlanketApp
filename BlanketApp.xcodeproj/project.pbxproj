@@ -15,6 +15,10 @@
 		A9505975283922EF00A9C4F6 /* BlanketAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9505974283922EF00A9C4F6 /* BlanketAppTests.swift */; };
 		A950597F283922EF00A9C4F6 /* BlanketAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A950597E283922EF00A9C4F6 /* BlanketAppUITests.swift */; };
 		A9505981283922EF00A9C4F6 /* BlanketAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9505980283922EF00A9C4F6 /* BlanketAppUITestsLaunchTests.swift */; };
+		A9815DEB283A66EF002E16A7 /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9815DEA283A66EF002E16A7 /* PlanView.swift */; };
+		A9815DED283A6C7F002E16A7 /* Plans.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9815DEC283A6C7F002E16A7 /* Plans.swift */; };
+		A9815DEF283A775D002E16A7 /* CreatePlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9815DEE283A775D002E16A7 /* CreatePlanView.swift */; };
+		A9815DF1283AB6FE002E16A7 /* PlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9815DF0283AB6FE002E16A7 /* PlanModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +50,10 @@
 		A950597A283922EF00A9C4F6 /* BlanketAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlanketAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A950597E283922EF00A9C4F6 /* BlanketAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlanketAppUITests.swift; sourceTree = "<group>"; };
 		A9505980283922EF00A9C4F6 /* BlanketAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlanketAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A9815DEA283A66EF002E16A7 /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
+		A9815DEC283A6C7F002E16A7 /* Plans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plans.swift; sourceTree = "<group>"; };
+		A9815DEE283A775D002E16A7 /* CreatePlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlanView.swift; sourceTree = "<group>"; };
+		A9815DF0283AB6FE002E16A7 /* PlanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +107,10 @@
 				A9505963283922EC00A9C4F6 /* BlanketAppApp.swift */,
 				A9505965283922EC00A9C4F6 /* ContentView.swift */,
 				A9116AA628398218002306F0 /* MainView.swift */,
+				A9815DEA283A66EF002E16A7 /* PlanView.swift */,
+				A9815DEE283A775D002E16A7 /* CreatePlanView.swift */,
+				A9815DEC283A6C7F002E16A7 /* Plans.swift */,
+				A9815DF0283AB6FE002E16A7 /* PlanModel.swift */,
 				A9505967283922EF00A9C4F6 /* Assets.xcassets */,
 				A9505969283922EF00A9C4F6 /* Preview Content */,
 			);
@@ -261,8 +273,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9505966283922EC00A9C4F6 /* ContentView.swift in Sources */,
+				A9815DED283A6C7F002E16A7 /* Plans.swift in Sources */,
 				A9116AA728398218002306F0 /* MainView.swift in Sources */,
 				A9505964283922EC00A9C4F6 /* BlanketAppApp.swift in Sources */,
+				A9815DEB283A66EF002E16A7 /* PlanView.swift in Sources */,
+				A9815DF1283AB6FE002E16A7 /* PlanModel.swift in Sources */,
+				A9815DEF283A775D002E16A7 /* CreatePlanView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

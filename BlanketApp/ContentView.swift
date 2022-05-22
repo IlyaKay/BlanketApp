@@ -11,26 +11,18 @@ struct ContentView: View {
     @State private var selection = 0
 
     var body: some View {
-        NavigationView {
-            TabView(selection: $selection) {
-                MainView()
-                    .tabItem {
-                        Image(systemName: "house.fill")
-                        Text("Home")
-                    }
-                    .tag(0)
-             
-                Text("Planning Tab")
-                    .font(.system(size: 30, weight: .bold, design: .rounded))
-                    .tabItem {
-                        Image(systemName: "bookmark.circle.fill")
-                        Text("Plan")
-                    }
-                    .tag(1)
-            }
+        TabView(selection: $selection) {
+            MainView()
+                .tabItem {
+                    Label("Home", systemImage: "house.fill")
+                }
+                .tag(0)
             
-            .navigationBarTitle("Blanket")
-            .navigationBarTitleDisplayMode(.inline)
+            PlanView()
+                .tabItem {
+                    Label("Plan", systemImage: "bookmark.circle.fill")
+                }
+                .tag(1)
         }
     }
 }

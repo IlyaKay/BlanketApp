@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct BlanketAppApp: App {
+    
+    @StateObject var planListModel: PlanListModel = PlanListModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView {
+                ContentView()
+            }
+            .environmentObject(planListModel)
         }
     }
 }

@@ -2,56 +2,42 @@
 //  MainView.swift
 //  BlanketApp
 //
-//  Created by Ilya Kiselev on 21/05/2022.
+//  Created by Ilya Kiselev on 10/05/2022.
 //
 
 import SwiftUI
 
 struct MainView: View {
     var body: some View {
-        VStack {
+        NavigationView {
             VStack {
-                Text("Target Bedtime:")
-                    .font(.system(size:21,weight:.medium,design:.default))
-            }
-            VStack {
-                Text("Target Sleep Length:")
-                    .font(.system(size:21,weight:.medium,design:.default))
-            }
-            Text("contact.name")
-                .font(.headline)
-            Form {
-                HStack {
-                    Text("Phone")
-                    Spacer()
-                    Text("contact.phone")
-                        .foregroundColor(.gray)
-                        .font(.callout)
+                VStack {
+                    Text("Target Bedtime:")
+                        .font(.system(size:21,weight:.medium,design:.default))
                 }
-                HStack {
-                    Text("Email")
-                    Spacer()
-                    Text("contact.email")
-                        .foregroundColor(.gray)
-                        .font(.callout)
+                VStack {
+                    Text("Target Sleep Length:")
+                        .font(.system(size:21,weight:.medium,design:.default))
                 }
-                HStack {
-                    Text("Role")
-                    Spacer()
-                    Text("contact.role")
-                        .foregroundColor(.gray)
-                        .font(.callout)
-                }
+                Text("contact.name")
+                    .font(.headline)
+                Text("contact.phone")
+                    .foregroundColor(.gray)
+                    .font(.callout)
                 Section {
                     Button(action: {
                         print("Call staff member \("contact.phone")")
                     }) {
                         Text("Call \("contact.name")")
+                            .font(.system(size: 30, weight: .bold, design: .rounded))
                     }
                     Link("Go to staff profile", destination: URL(string: "contact.profile")!)
                 }
+                Spacer()
             }
         }
+        .navigationBarTitle("Blanket")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
