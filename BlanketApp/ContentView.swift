@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selection = 0
+    @State private var tabSelection = 0
 
     var body: some View {
-        TabView(selection: $selection) {
+        TabView(selection: $tabSelection) {
             MainView()
                 .tabItem {
                     Label("Home", systemImage: "house.fill")
                 }
                 .tag(0)
             
-            PlanView()
+            PlanView(tabSelection: $tabSelection)
                 .tabItem {
                     Label("Plan", systemImage: "bookmark.circle.fill")
                 }

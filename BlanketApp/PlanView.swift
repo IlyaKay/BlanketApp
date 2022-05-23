@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct PlanView: View {
-    
     @EnvironmentObject var planListModel: PlanListModel
+    @Binding var tabSelection: Int
     
     var body: some View {
         NavigationView {
@@ -21,7 +21,27 @@ struct PlanView: View {
                 } else {
                     List {
                         ForEach(planListModel.planList) { plan in
-                            Text(plan.planTitle)
+                            NavigationLink(destination: ActivatePlanView(plan: plan, tabSelection: $tabSelection)) {
+                                HStack {
+                                    Text(plan.planTitle)
+                                    Spacer()
+                                    Text(plan.wakeTime, style: .time)
+                                    Text("\(plan.correctionPeriod)d")
+                                        .font(.caption)
+                                        .fontWeight(.black)
+                                        .padding(6)
+                                        .background(.green)
+                                        .clipShape(Circle())
+                                        .foregroundColor(.white)
+                                    Text("\(plan.sleepLength)h")
+                                        .font(.caption)
+                                        .fontWeight(.black)
+                                        .padding(6)
+                                        .background(.blue)
+                                        .clipShape(Circle())
+                                        .foregroundColor(.white)
+                                }
+                           }
                         }
                         .onDelete(perform: planListModel.deletePlan)
                         .onMove(perform: planListModel.movePlan)
@@ -39,6 +59,6 @@ struct PlanView: View {
 
 struct PlanView_Previews: PreviewProvider {
     static var previews: some View {
-        PlanView()
+        PlanView(tabSelection: .constant(1))
     }
 }

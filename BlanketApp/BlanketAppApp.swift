@@ -11,6 +11,7 @@ import SwiftUI
 struct BlanketAppApp: App {
     
     @StateObject var planListModel: PlanListModel = PlanListModel()
+    @StateObject var activePlanListModel: ActivePlanListModel = ActivePlanListModel()
     
     var body: some Scene {
         WindowGroup {
@@ -18,6 +19,7 @@ struct BlanketAppApp: App {
                 ContentView()
             }
             .environmentObject(planListModel)
+            .environmentObject(activePlanListModel)
         }
     }
 }

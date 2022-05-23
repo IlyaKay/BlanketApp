@@ -14,7 +14,7 @@ struct CreatePlanView: View {
     
     @State private var planTitle: String = ""
     @State private var wakeTime: Date = Date()
-    @State private var correctionPeriod: Int = 2
+    @State private var correctionPeriod: Int = 5
     @State private var sleepLength: Int = 4
     
     @State private var ignoreWarning: Bool = false
@@ -34,7 +34,7 @@ struct CreatePlanView: View {
                 }
                 DatePicker("Target time to wake up:", selection: $wakeTime, displayedComponents: .hourAndMinute)
                 Picker("Nights to correct over:", selection: $correctionPeriod) {
-                    ForEach(1..<8) {
+                    ForEach(2..<15) {
                         Text("\($0) nights")
                     }
                 }
@@ -53,7 +53,7 @@ struct CreatePlanView: View {
     
     func saveNewPlan() {
         if validateFields() {
-            planListModel.addPlan(planTitle: planTitle, wakeTime: wakeTime, correctionPeriod: correctionPeriod, sleepLength: sleepLength)
+            planListModel.addPlan(planTitle: planTitle, wakeTime: wakeTime, correctionPeriod: correctionPeriod + 2, sleepLength: sleepLength + 4)
             presentationMode.wrappedValue.dismiss()
         }
     }
@@ -75,7 +75,7 @@ struct CreatePlanView: View {
             primaryButton: .destructive(Text("Continue")) {
                 ignoreWarning = true
             },
-            secondaryButton: .cancel(Text("OK"))
+            secondaryButton: .cancel(Text("Cancel"))
         )
     }
 }

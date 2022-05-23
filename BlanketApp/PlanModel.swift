@@ -14,6 +14,8 @@ struct PlanModel: Identifiable, Codable {
     let correctionPeriod: Int
     let sleepLength: Int
     
+    static let example = PlanModel(id: UUID().uuidString, planTitle: "String", wakeTime: Date(), correctionPeriod: 7, sleepLength: 8)
+    
     init(id: String = UUID().uuidString, planTitle: String, wakeTime: Date, correctionPeriod: Int, sleepLength: Int) {
         self.id = id
         self.planTitle = planTitle
@@ -21,7 +23,6 @@ struct PlanModel: Identifiable, Codable {
         self.correctionPeriod = correctionPeriod
         self.sleepLength = sleepLength
     }
-    
 }
 
 class PlanListModel: ObservableObject {
@@ -47,6 +48,12 @@ class PlanListModel: ObservableObject {
         self.planList = savePlans
     }
     
+    func savePlans() {
+        if let encodedData = try? JSONEncoder().encode(planList) {
+            UserDefaults.standard.set(encodedData, forKey: planKey)
+        }
+    }
+    
     func movePlan(from: IndexSet, to: Int) {
         planList.move(fromOffsets: from, toOffset: to)
     }
@@ -58,11 +65,5 @@ class PlanListModel: ObservableObject {
     func addPlan(planTitle: String, wakeTime: Date, correctionPeriod: Int, sleepLength: Int) {
         let newPlan = PlanModel(planTitle: planTitle, wakeTime: wakeTime, correctionPeriod: correctionPeriod, sleepLength: sleepLength)
         planList.append(newPlan)
-    }
-    
-    func savePlans() {
-        if let encodedData = try? JSONEncoder().encode(planList) {
-            UserDefaults.standard.set(encodedData, forKey: planKey)
-        }
     }
 }
