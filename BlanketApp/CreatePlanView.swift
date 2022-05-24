@@ -39,7 +39,7 @@ struct CreatePlanView: View {
                     }
                 }
                 Picker("Length of sleep per day:", selection: $sleepLength) {
-                    ForEach(4..<13) {
+                    ForEach(4..<11) {
                         Text("\($0) hours")
                     }
                 }

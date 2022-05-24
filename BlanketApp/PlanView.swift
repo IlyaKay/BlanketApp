@@ -50,7 +50,7 @@ struct PlanView: View {
                 }
                 NavigationLink("Create a new plan!", destination: CreatePlanView())
             }
-            .navigationBarTitle("Planning 🗺")
+            .navigationBarTitle("Planning ☀️") // 🗺
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(leading: EditButton(), trailing: NavigationLink("Add", destination: CreatePlanView()))
         }

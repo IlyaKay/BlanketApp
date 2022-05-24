@@ -20,14 +20,16 @@ struct ActivatePlanView: View {
         Form {
             Section {
                 Text("Aim to sleep \(plan.sleepLength) hrs a night over \(plan.correctionPeriod) days.")
+                Text("After the plan you will wake at \(plan.wakeTime, style: .time).")
             }
             
             DatePicker("Bedtime from last night:", selection: $bedTime, displayedComponents: .hourAndMinute)
             
-//            Text(plan.wakeTime, style: .date)
-            
             Button("Activate plan!") {
+                // uses all collected parameters to build a personalised sleeping plan
+                // function includes lots of math, you have been warned
                 activePlanListModel.buildPlan(plan: plan, currentBedTime: bedTime)
+                // switch to home tab
                 presentationMode.wrappedValue.dismiss()
                 tabSelection = 0
             }

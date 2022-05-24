@@ -50,22 +50,31 @@ class ActivePlanListModel: ObservableObject {
     }
     
     func buildPlan(plan: PlanModel, currentBedTime: Date) {
+        // remove any existing active plans
         activePlanList.removeAll()
         let calendar = Calendar.current
         var dateComponent = DateComponents()
         
+        // extract hours and minutes from current bedtime
         let startHour = (calendar.component(.hour, from: currentBedTime))
         var startMinute = (startHour * 60) + (calendar.component(.minute, from: currentBedTime))
         
+        // extract hours and minutes from planned wakeup time
         let finalHour = (calendar.component(.hour, from: plan.wakeTime))
         let finalMinute = (finalHour * 60) + (calendar.component(.minute, from: plan.wakeTime))
         
+        // calculate the amount of time that the sleep schedule shifts every day
         startMinute = startMinute + (plan.sleepLength * 60)
-        let difference = finalMinute - startMinute
-        
+        var difference = finalMinute - startMinute
+        if difference > 720 {
+            difference = difference - 1440
+        } else if difference < -720 {
+            difference = difference + 1440
+        }
         let interval = (difference / plan.correctionPeriod)
         
         for i in 1..<(plan.correctionPeriod) {
+            // calculate the exact time and date that the user should go to bed and wake up
             dateComponent.day = i
             let nextInterval = round(Double(interval * i))
             var bedTime = currentBedTime.addingTimeInterval(TimeInterval(Int(nextInterval) * 60))
@@ -73,24 +82,26 @@ class ActivePlanListModel: ObservableObject {
             let alarmTime = bedTime.addingTimeInterval(TimeInterval(Int(plan.sleepLength) * 60 * 60))
             activePlanList.append(ActivePlanModel(bedTime: bedTime, alarmTime: alarmTime))
             
-            // remove the current plan when it is used up (at its alarmTime)
+            // setup a timer to remove the plan when it is used up (at its alarmTime)
             let timer = Timer(fireAt: alarmTime, interval: 0, target: self, selector: #selector(deleteTopPlan), userInfo: nil, repeats: false)
             RunLoop.main.add(timer, forMode: .common)
         }
+        // final day can use the target bed and alarm time to account for the rounding errors in nextInterval
         dateComponent.day = plan.correctionPeriod
-        var bedTime = plan.wakeTime.addingTimeInterval(-(Double(Int(plan.sleepLength) * 60 * 60)))
+        var bedTime = currentBedTime.addingTimeInterval(TimeInterval(Int(difference) * 60))
         bedTime = calendar.date(byAdding: dateComponent, to: bedTime)!
         activePlanList.append(ActivePlanModel(bedTime: bedTime, alarmTime: plan.wakeTime))
         
+        // attempt to activate notifications
         activateNotifications()
         
-//            startMinute = ((startMinute + Int(interval)) % 1440)
-//            startHour = (Int)(floor(Double(startMinute / 60)))
-//            startMinute = startMinute % 60
+        // DEMO/TESTING remove top plan after 5 seconds
+//        let timer = Timer(fireAt: Date.now.addingTimeInterval(5), interval: 0, target: self, selector: #selector(deleteTopPlan), userInfo: nil, repeats: false)
+//        RunLoop.main.add(timer, forMode: .common)
+        
         
 //            var bedTime = calendar.date(byAdding: .minute, value: Int(interval), to: currentBedTime)
 //            var alarmTime = calendar.date(byAdding: .hour, value: plan.sleepLength, to: bedTime)
-        
 //        let date = calendar.date(bySettingHour: startHour, minute: startMinute, second: 0, of: Date())!
     }
     
@@ -106,7 +117,9 @@ class ActivePlanListModel: ObservableObject {
                 UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
                 
                 for plan in self.activePlanList {
+                    
                     // Primary Notification //
+                    
                     let bedTimeForm = dateFormatter.string(from: plan.bedTime)
                     let alarmTimeForm = dateFormatter.string(from: plan.alarmTime)
                     
@@ -139,11 +152,16 @@ class ActivePlanListModel: ObservableObject {
                     // show this notification 5 minutes before bedtime
                     request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
 
-                    // choose a random identifier
-                    request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-
                     // add our notification request
                     UNUserNotificationCenter.current().add(request)
+                    
+                    // DEMO/TESTING send a notification after 20 seconds
+//                    content.title = "Test notification"
+//                    content.body = "Make sure you go to bed at \(bedTimeForm) to get your full night's rest!"
+//                    let testTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 20, repeats: false)
+//                    request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: testTrigger)
+//                    UNUserNotificationCenter.current().add(request)
+                    
                 }
             } else if let error = error {
                 print(error.localizedDescription)
