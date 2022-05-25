@@ -9,7 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var tabSelection = 0
-
+    
+    init() {
+        UITabBar.appearance().backgroundColor = UIColor(Color("Background"))
+    }
+    
     var body: some View {
         TabView(selection: $tabSelection) {
             MainView()
@@ -24,6 +28,7 @@ struct ContentView: View {
                 }
                 .tag(1)
         }
+        .accentColor(Color("SelectedIcon"))
     }
 }
 

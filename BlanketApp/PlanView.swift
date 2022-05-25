@@ -41,7 +41,8 @@ struct PlanView: View {
                                         .clipShape(Circle())
                                         .foregroundColor(.white)
                                 }
-                           }
+                            }
+                            .listRowBackground(Color.green.opacity(0))
                         }
                         .onDelete(perform: planListModel.deletePlan)
                         .onMove(perform: planListModel.movePlan)
@@ -53,6 +54,7 @@ struct PlanView: View {
             .navigationBarTitle("Planning ☀️") // 🗺
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(leading: EditButton(), trailing: NavigationLink("Add", destination: CreatePlanView()))
+            .background(Color("Background"))
         }
     }
 }
