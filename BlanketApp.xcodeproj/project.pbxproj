@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A9116AA728398218002306F0 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9116AA628398218002306F0 /* MainView.swift */; };
+		A9119F4B283EDA4F00D26DD6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9119F4A283EDA4F00D26DD6 /* LaunchScreen.storyboard */; };
 		A94684F7283B8F5A00EACEDC /* ActivatePlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94684F6283B8F5A00EACEDC /* ActivatePlanView.swift */; };
 		A94684F9283B9DF700EACEDC /* ActivePlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94684F8283B9DF700EACEDC /* ActivePlanModel.swift */; };
 		A9505964283922EC00A9C4F6 /* BlanketAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9505963283922EC00A9C4F6 /* BlanketAppApp.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		A9116AA628398218002306F0 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		A9119F4A283EDA4F00D26DD6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A94684F6283B8F5A00EACEDC /* ActivatePlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivatePlanView.swift; sourceTree = "<group>"; };
 		A94684F8283B9DF700EACEDC /* ActivePlanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivePlanModel.swift; sourceTree = "<group>"; };
 		A9505960283922EC00A9C4F6 /* BlanketApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlanketApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,6 +121,7 @@
 				A94684F8283B9DF700EACEDC /* ActivePlanModel.swift */,
 				A9505967283922EF00A9C4F6 /* Assets.xcassets */,
 				A9505969283922EF00A9C4F6 /* Preview Content */,
+				A9119F4A283EDA4F00D26DD6 /* LaunchScreen.storyboard */,
 			);
 			path = BlanketApp;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9119F4B283EDA4F00D26DD6 /* LaunchScreen.storyboard in Resources */,
 				A950596B283922EF00A9C4F6 /* Preview Assets.xcassets in Resources */,
 				A9505968283922EF00A9C4F6 /* Assets.xcassets in Resources */,
 			);
@@ -452,6 +456,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -480,6 +485,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

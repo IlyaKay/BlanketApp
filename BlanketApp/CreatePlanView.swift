@@ -9,6 +9,10 @@ import SwiftUI
 
 struct CreatePlanView: View {
     
+    init(){
+        UITableView.appearance().backgroundColor = .clear
+    }
+    
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var planListModel: PlanListModel
     
@@ -34,7 +38,7 @@ struct CreatePlanView: View {
                 }
                 DatePicker("Target time to wake up:", selection: $wakeTime, displayedComponents: .hourAndMinute)
                 Picker("Nights to correct over:", selection: $correctionPeriod) {
-                    ForEach(2..<15) {
+                    ForEach(2..<29) {
                         Text("\($0) nights")
                     }
                 }
@@ -48,7 +52,10 @@ struct CreatePlanView: View {
                 Text("Save")
             })
         }
+        .navigationBarTitle("Add Plan")
+        .navigationBarTitleDisplayMode(.inline)
         .alert(isPresented: $showAlert, content: getAlert)
+        .background(Color("Background"))
     }
     
     func saveNewPlan() {

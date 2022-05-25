@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ActivatePlanView: View {
+    
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var activePlanListModel: ActivePlanListModel
     
@@ -37,6 +38,7 @@ struct ActivatePlanView: View {
         }
         .navigationTitle(plan.planTitle)
         .navigationBarTitleDisplayMode(.inline)
+        .background(Color("Background"))
     }
 }
 

@@ -46,7 +46,7 @@ struct MainView: View {
     //                Text("contact.phone")
     //                    .foregroundColor(.gray)
     //                    .font(.callout)
-                    Spacer(minLength: 30)
+                    Spacer(minLength: 90)
                     VStack {
                         Text("Current sleep plan:")
                             .font(.system(size:21,weight:.medium,design:.rounded))
@@ -71,9 +71,12 @@ struct MainView: View {
                     .foregroundColor(Color(.white))
                     Spacer()
                 }
-                .navigationBarTitle("Home 🌙")
+                .navigationBarTitle("Home")
                 .navigationBarTitleDisplayMode(.inline)
             }
+        }.onAppear {
+            UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation") // Forcing the rotation to portrait
+            AppDelegate.orientationLock = .portrait // And making sure it stays that way
         }
         .navigationBarTitle("Blanket")
         .navigationBarTitleDisplayMode(.inline)

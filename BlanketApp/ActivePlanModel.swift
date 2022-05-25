@@ -92,6 +92,8 @@ class ActivePlanListModel: ObservableObject {
         bedTime = calendar.date(byAdding: dateComponent, to: bedTime)!
         activePlanList.append(ActivePlanModel(bedTime: bedTime, alarmTime: plan.wakeTime))
         
+        // no timer to delete this plan to leave the correct schedule on the main screne
+        
         // attempt to activate notifications
         activateNotifications()
         

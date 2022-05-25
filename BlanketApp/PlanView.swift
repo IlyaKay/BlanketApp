@@ -49,9 +49,9 @@ struct PlanView: View {
                     }
                     .listStyle(PlainListStyle())
                 }
-                NavigationLink("Create a new plan!", destination: CreatePlanView())
+                Text("") // Fixes tabbar colour
             }
-            .navigationBarTitle("Planning ☀️") // 🗺
+            .navigationBarTitle("Planning") // 🗺
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(leading: EditButton(), trailing: NavigationLink("Add", destination: CreatePlanView()))
             .background(Color("Background"))
