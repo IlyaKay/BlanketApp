@@ -97,14 +97,10 @@ class ActivePlanListModel: ObservableObject {
         // attempt to activate notifications
         activateNotifications()
         
-        // DEMO/TESTING remove top plan after 5 seconds
-//        let timer = Timer(fireAt: Date.now.addingTimeInterval(5), interval: 0, target: self, selector: #selector(deleteTopPlan), userInfo: nil, repeats: false)
-//        RunLoop.main.add(timer, forMode: .common)
+        // DEMO/TESTING remove top plan after 10 seconds
+        let timer = Timer(fireAt: Date.now.addingTimeInterval(10), interval: 0, target: self, selector: #selector(deleteTopPlan), userInfo: nil, repeats: false)
+        RunLoop.main.add(timer, forMode: .common)
         
-        
-//            var bedTime = calendar.date(byAdding: .minute, value: Int(interval), to: currentBedTime)
-//            var alarmTime = calendar.date(byAdding: .hour, value: plan.sleepLength, to: bedTime)
-//        let date = calendar.date(bySettingHour: startHour, minute: startMinute, second: 0, of: Date())!
     }
     
     func activateNotifications() {
@@ -158,11 +154,11 @@ class ActivePlanListModel: ObservableObject {
                     UNUserNotificationCenter.current().add(request)
                     
                     // DEMO/TESTING send a notification after 20 seconds
-//                    content.title = "Test notification"
-//                    content.body = "Make sure you go to bed at \(bedTimeForm) to get your full night's rest!"
-//                    let testTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 20, repeats: false)
-//                    request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: testTrigger)
-//                    UNUserNotificationCenter.current().add(request)
+                    content.title = "Bedtime Reminder"
+                    content.body = "Make sure you go to bed at \(bedTimeForm) to get your full night's rest!"
+                    let testTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 20, repeats: false)
+                    request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: testTrigger)
+                    UNUserNotificationCenter.current().add(request)
                     
                 }
             } else if let error = error {

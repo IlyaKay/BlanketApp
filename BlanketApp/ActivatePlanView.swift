@@ -25,7 +25,6 @@ struct ActivatePlanView: View {
             }
             
             DatePicker("Bedtime from last night:", selection: $bedTime, displayedComponents: .hourAndMinute)
-            
             Button("Activate plan!") {
                 // uses all collected parameters to build a personalised sleeping plan
                 // function includes lots of math, you have been warned

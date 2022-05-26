@@ -31,42 +31,45 @@ struct MainView: View {
                     VStack {
                         Text("Bedtime tonight:")
                             .font(.system(size:21,weight:.medium,design:.rounded))
-                        Text("\(activePlanListModel.activePlanList[0].bedTime, style: .time)")
-                            .font(.system(size:30,weight:.medium,design:.default))
+                        if activePlanListModel.activePlanList.isEmpty {
+                            Text("11:00 PM")
+                                .font(.system(size:30,weight:.medium,design:.default))
+                        } else {
+                            Text("\(activePlanListModel.activePlanList[0].bedTime, style: .time)")
+                                .font(.system(size:30,weight:.medium,design:.default))
+                        }
                     }
                     Spacer(minLength: 15)
                     VStack {
                         Text("Set alarm for:")
                             .font(.system(size:21,weight:.medium,design:.rounded))
-                        Text("\(activePlanListModel.activePlanList[0].alarmTime, style: .time)")
-                            .font(.system(size:30,weight:.medium,design:.default))
+                        if activePlanListModel.activePlanList.isEmpty {
+                            Text("7:00 AM")
+                                .font(.system(size:30,weight:.medium,design:.default))
+                        } else {
+                            Text("\(activePlanListModel.activePlanList[0].alarmTime, style: .time)")
+                                .font(.system(size:30,weight:.medium,design:.default))
+                        }
                     }
-    //                Text("contact.name")
-    //                    .font(.headline)
-    //                Text("contact.phone")
-    //                    .foregroundColor(.gray)
-    //                    .font(.callout)
                     Spacer(minLength: 90)
                     VStack {
-                        Text("Current sleep plan:")
-                            .font(.system(size:21,weight:.medium,design:.rounded))
-                        if activePlanListModel.activePlanList.isEmpty {
-                            Text("No plans yet")
-                        } else {
-                            List {
-                                ForEach(activePlanListModel.activePlanList) { plan in
-                                    HStack {
-                                        Text(plan.bedTime, style: .date)
-                                        Spacer()
-                                        Text(plan.bedTime, style: .time)
-                                        Text("-")
-                                        Text(plan.alarmTime, style: .time)
-                                    }
-                                    .listRowBackground(Color.white.opacity(0))
-                                }
-                            }
-                            .listStyle(PlainListStyle())
+                        if !activePlanListModel.activePlanList.isEmpty {
+                            Text("Current sleep plan:")
+                                .font(.system(size:21,weight:.medium,design:.rounded))
                         }
+                        List {
+                            ForEach(activePlanListModel.activePlanList) { plan in
+                                HStack {
+                                    Text(plan.bedTime, style: .date)
+                                    Spacer()
+                                    Text(plan.bedTime, style: .time)
+                                    Text("-")
+                                    Text(plan.alarmTime, style: .time)
+                                }
+                                .listRowBackground(Color.white.opacity(0))
+                            }
+                        }
+                        .listStyle(PlainListStyle())
                     }
                     .foregroundColor(Color(.white))
                     Spacer()
@@ -80,8 +83,6 @@ struct MainView: View {
         }
         .navigationBarTitle("Blanket")
         .navigationBarTitleDisplayMode(.inline)
-    
-        
     }
 }
 
